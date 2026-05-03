@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONDC Growth Strategy Deck 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#0B57D0;--blue-dk:#083da0;--orange:#FF6A00;
+  --black:#080808;--white:#FFFFFF;--off:#F4F3EE;
+  --gray:#E6E4DD;--gmid:#BDBBB4;--gdk:#5A5855;
+  --yellow:#FFE600;--green:#1B6B3A;--red:#BF3535;
+  --fh:'Bricolage Grotesque',sans-serif;
+  --fb:'Inter',sans-serif;
+  --fm:'Space Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--off);color:var(--black);overflow-x:hidden}
+
+/* HERO */
+.hero{background:var(--black);min-height:100vh;padding:56px 72px 72px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:-120px;right:-80px;width:500px;height:500px;border-radius:50%;background:var(--blue);opacity:.06;pointer-events:none}
+.htag{font-family:var(--fm);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:14px;margin-bottom:64px}
+.htag::before{content:'';display:block;width:36px;height:1.5px;background:var(--orange)}
+.hh1{font-family:var(--fh);font-size:clamp(52px,9vw,104px);font-weight:800;line-height:.92;color:var(--white);letter-spacing:-.02em;margin-bottom:36px;max-width:860px}
+.hh1 .o{color:var(--orange)}
+.hsub{font-size:17px;font-weight:300;color:rgba(255,255,255,.4);max-width:480px;line-height:1.7;margin-bottom:72px}
+.hstats{display:grid;grid-template-columns:repeat(4,auto);width:fit-content;border:1px solid rgba(255,255,255,.1)}
+.hs{padding:24px 40px;border-right:1px solid rgba(255,255,255,.1)}
+.hs:last-child{border-right:none}
+.hs-n{font-family:var(--fh);font-size:36px;font-weight:800;color:var(--white);display:block;line-height:1;margin-bottom:6px}
+.hs-n .a{color:var(--orange)}
+.hs-l{font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);display:block}
+.hscroll{position:absolute;bottom:40px;right:72px;font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);writing-mode:vertical-rl;display:flex;align-items:center;gap:10px}
+.hscroll::before{content:'';display:block;width:1px;height:56px;background:rgba(255,255,255,.15)}
+
+/* SECTION */
+.sec{padding:80px 72px}
+.slabel{font-family:var(--fm);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.slabel span{background:var(--blue);color:var(--white);width:18px;height:18px;border-radius:3px;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;flex-shrink:0}
+.stitle{font-family:var(--fh);font-size:clamp(30px,4.5vw,52px);font-weight:800;line-height:1.0;letter-spacing:-.02em;color:var(--black);margin-bottom:48px;max-width:680px}
+.stitle .bl{color:var(--blue)}.stitle .or{color:var(--orange)}
+
+/* DIAGNOSIS */
+.diag{background:var(--white)}
+.paradox{background:var(--black);padding:48px 56px;margin-bottom:2px;position:relative;overflow:hidden}
+.paradox::before{content:'\201C';font-family:var(--fh);font-size:240px;font-weight:800;color:rgba(255,255,255,.04);position:absolute;top:-40px;left:20px;line-height:1;pointer-events:none}
+.paradox-txt{font-family:var(--fh);font-size:clamp(20px,3vw,32px);font-weight:600;color:var(--white);line-height:1.35;max-width:760px;position:relative}
+.paradox-txt .hl{color:var(--orange)}
+.blockers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--black);border:2px solid var(--black);margin-bottom:2px}
+.blk{background:var(--off);padding:36px 32px}
+.blk-icon{font-family:var(--fm);font-size:10px;font-weight:700;color:var(--orange);letter-spacing:.1em;margin-bottom:14px;display:block}
+.blk-who{font-family:var(--fh);font-size:18px;font-weight:800;color:var(--black);margin-bottom:8px}
+.blk-fear{font-size:13px;color:var(--gdk);line-height:1.55}
+.wedge{background:var(--blue);padding:40px 56px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.wedge-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:10px}
+.wedge-txt{font-family:var(--fh);font-size:clamp(18px,2.2vw,26px);font-weight:700;color:var(--white);line-height:1.35;max-width:560px}
+.wedge-n{text-align:right}
+.wedge-big{font-family:var(--fh);font-size:72px;font-weight:800;color:var(--yellow);line-height:1}
+.wedge-sm{font-family:var(--fm);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+
+/* TRACTION */
+.trac{background:var(--off)}
+.chartgrid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--black);border:2px solid var(--black);margin-bottom:2px}
+.cpanel{background:var(--white);padding:32px 36px}
+.cpanel-t{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--black);margin-bottom:3px}
+.cpanel-s{font-family:var(--fm);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--gdk);margin-bottom:18px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px;font-size:11px;color:var(--gdk)}
+.li{display:flex;align-items:center;gap:5px}
+.ls{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.cinsight{margin-top:14px;padding:10px 14px;background:var(--off);border-left:3px solid var(--orange);font-size:11px;color:var(--gdk);line-height:1.55}
+.cinsight strong{color:var(--black);font-weight:600}
+.tbuckets{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--black);border:2px solid var(--black)}
+.bkt{padding:28px 24px}
+.bkt-str{background:#1B6B3A}.bkt-emg{background:#97720A}.bkt-exp{background:#7A3010}.bkt-wk{background:#3A3A3A}
+.blbl{font-family:var(--fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.bd{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.bd-s{background:#5FE89A}.bd-e{background:#FFD700}.bd-x{background:#FFA07A}.bd-w{background:#888}
+.bcats{list-style:none;display:flex;flex-direction:column;gap:8px}
+.bcats li{font-family:var(--fh);font-size:14px;font-weight:700;color:var(--white);display:flex;align-items:center;gap:8px}
+.bcats li span{font-family:var(--fm);font-size:8px;color:rgba(255,255,255,.4);font-weight:400}
+
+/* INSIGHTS */
+.ins-sec{background:var(--black)}
+.ins-sec .slabel{color:rgba(255,165,0,.8)}
+.ins-sec .slabel span{background:var(--orange)}
+.ins-sec .stitle{color:var(--white)}
+.istrip{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);margin-bottom:2px}
+.icell{background:var(--black);padding:36px 40px;border:1px solid rgba(255,255,255,.05)}
+.inum{font-family:var(--fm);font-size:9px;letter-spacing:.2em;color:var(--orange);margin-bottom:14px}
+.ihead{font-family:var(--fh);font-size:19px;font-weight:700;color:var(--white);line-height:1.25;margin-bottom:10px}
+.ibody{font-size:13px;color:rgba(255,255,255,.4);line-height:1.65}
+.itag{display:inline-block;margin-top:14px;padding:3px 10px;background:rgba(255,106,0,.12);color:var(--orange);font-family:var(--fm);font-size:7px;letter-spacing:.15em;text-transform:uppercase;border:1px solid rgba(255,106,0,.25);border-radius:2px}
+.iwide{background:var(--orange);padding:36px 56px;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;margin-bottom:2px}
+.iwide-n{font-family:var(--fh);font-size:80px;font-weight:800;color:rgba(0,0,0,.15);line-height:1}
+.iwide-t{font-family:var(--fh);font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--black);line-height:1.35}
+
+/* TRANSITION */
+.trans{background:var(--off);padding:80px 72px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;border-top:2px solid var(--black);border-bottom:2px solid var(--black)}
+.tr-badge{font-family:var(--fm);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.tr-badge::before{content:'';width:24px;height:2px;background:var(--orange)}
+.tr-q{font-family:var(--fh);font-size:clamp(26px,3.8vw,46px);font-weight:800;color:var(--black);line-height:1.05;letter-spacing:-.02em}
+.tr-q .bl{color:var(--blue)}
+.tr-r{display:flex;flex-direction:column;gap:14px}
+.trp{padding:18px 22px;background:var(--white);border:1.5px solid var(--black);display:flex;align-items:flex-start;gap:14px}
+.trp-icon{width:30px;height:30px;background:var(--black);color:var(--white);font-family:var(--fm);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trp-t{font-size:13px;font-weight:500;color:var(--black);line-height:1.5}
+.trp-t small{display:block;font-size:11px;color:var(--gdk);font-weight:400;margin-top:3px;line-height:1.5}
+
+/* CAMPAIGNS */
+.camp{background:var(--white)}
+.ctype-bar{display:flex;border:2px solid var(--black);margin-bottom:2px}
+.ct{padding:12px 24px;font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;border-right:2px solid var(--black)}
+.ct:last-child{border-right:none}
+.ct-sup{background:var(--black);color:var(--white)}
+.ct-dem{background:var(--blue);color:var(--white)}
+.ct-off{background:var(--white);color:var(--gmid)}
+.crow{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--black);border:2px solid var(--black);margin-bottom:2px}
+.cc{background:var(--white);padding:36px 36px 30px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.cc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.cc-s::before{background:var(--orange)}
+.cc-d::before{background:var(--blue)}
+.cch{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px}
+.cpill{font-family:var(--fm);font-size:7px;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;border-radius:2px;font-weight:700}
+.ps{background:rgba(255,106,0,.1);color:var(--orange)}
+.pd{background:rgba(11,87,208,.1);color:var(--blue)}
+.ccid{font-family:var(--fm);font-size:9px;color:var(--gmid)}
+.ccname{font-family:var(--fh);font-size:21px;font-weight:800;color:var(--black);line-height:1.1;margin-bottom:6px;letter-spacing:-.01em}
+.ccname small{font-size:13px;font-weight:400;color:var(--gdk)}
+.cchook{font-size:13px;font-style:italic;color:var(--gdk);margin-bottom:18px;line-height:1.5;border-left:3px solid var(--gray);padding-left:12px}
+.ccmeta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.ccmi{padding:10px 12px;background:var(--off)}
+.ccmi-l{font-family:var(--fm);font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:var(--gdk);margin-bottom:3px;display:block}
+.ccmi-v{font-size:11px;font-weight:500;color:var(--black);line-height:1.4}
+.ccloop{padding:14px 16px;background:var(--black);margin-top:auto}
+.ccloop-l{font-family:var(--fm);font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:5px}
+.ccloop-t{font-size:11px;color:rgba(255,255,255,.6);line-height:1.5}
+.ccmet{margin-top:10px;display:flex;align-items:flex-start;gap:8px;font-family:var(--fm);font-size:9px;color:var(--orange);line-height:1.45}
+.ccmet::before{content:'';width:5px;height:5px;background:var(--orange);border-radius:50%;flex-shrink:0;margin-top:4px}
+
+/* INSPIRATIONS */
+.inspo{background:var(--off)}
+.igrid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--black);border:2px solid var(--black)}
+.icard{background:var(--white);padding:26px 24px}
+.ic-n{font-family:var(--fh);font-size:44px;font-weight:800;color:var(--gray);line-height:1;margin-bottom:6px}
+.ic-src{font-family:var(--fm);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+.ic-mech{font-family:var(--fh);font-size:13px;font-weight:700;color:var(--black);margin-bottom:8px;line-height:1.3}
+.ic-remix{font-size:11px;color:var(--gdk);line-height:1.55;margin-bottom:12px}
+.ic-pill{display:inline-block;padding:3px 8px;background:var(--black);color:var(--white);font-family:var(--fm);font-size:7px;letter-spacing:.15em;text-transform:uppercase;border-radius:2px}
+
+/* ROLLOUT */
+.roll{background:var(--black)}
+.roll .slabel{color:rgba(255,165,0,.8)}
+.roll .slabel span{background:var(--orange)}
+.roll .stitle{color:var(--white)}
+.tlrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.05);margin-bottom:28px}
+.tlp{padding:36px 32px}
+.tlp-w{background:rgba(255,106,0,.06);border:1px solid rgba(255,106,0,.12)}
+.tlp-m{background:rgba(11,87,208,.06);border:1px solid rgba(11,87,208,.12)}
+.tlp-q{background:rgba(255,230,0,.05);border:1px solid rgba(255,230,0,.12)}
+.tlperiod{font-family:var(--fm);font-size:8px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:6px}
+.tlp-w .tlperiod{color:var(--orange)}
+.tlp-m .tlperiod{color:#7BA8FF}
+.tlp-q .tlperiod{color:var(--yellow)}
+.tltitle{font-family:var(--fh);font-size:18px;font-weight:800;color:var(--white);margin-bottom:18px;line-height:1.25}
+.tlitems{list-style:none;display:flex;flex-direction:column;gap:9px}
+.tli{font-size:12px;color:rgba(255,255,255,.45);line-height:1.5;padding-left:14px;position:relative}
+.tli::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%}
+.tlp-w .tli::before{background:var(--orange)}
+.tlp-m .tli::before{background:#7BA8FF}
+.tlp-q .tli::before{background:var(--yellow)}
+.kpibar{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.05)}
+.kpib{padding:22px 26px;background:rgba(11,87,208,.1);border:1px solid rgba(11,87,208,.18)}
+.kpiv{font-family:var(--fh);font-size:26px;font-weight:800;color:var(--yellow);display:block;margin-bottom:4px}
+.kpil{font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);display:block}
+
+/* DONTS */
+.donts-sec{background:var(--red);padding:80px 72px}
+.donts-sec .slabel{color:rgba(255,255,255,.55)}
+.donts-sec .slabel span{background:rgba(255,255,255,.25);color:var(--white)}
+.donts-sec .stitle{color:var(--white);max-width:100%}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(0,0,0,.18);border:2px solid rgba(0,0,0,.25)}
+.dc{background:rgba(0,0,0,.12);padding:30px 34px;display:flex;align-items:flex-start;gap:18px}
+.dc-x{font-family:var(--fh);font-size:24px;font-weight:800;color:rgba(255,255,255,.25);flex-shrink:0;line-height:1;margin-top:2px}
+.dc-t{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--white);line-height:1.4}
+.dc-t small{display:block;font-family:var(--fb);font-size:11px;font-weight:400;color:rgba(255,255,255,.5);margin-top:5px;line-height:1.55}
+
+/* THESIS */
+.thesis{background:var(--yellow);padding:96px 72px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.th-eye{font-family:var(--fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(0,0,0,.4);margin-bottom:32px}
+.th-txt{font-family:var(--fh);font-size:clamp(22px,3.5vw,42px);font-weight:800;color:var(--black);line-height:1.15;max-width:900px;letter-spacing:-.02em;margin-bottom:48px}
+.th-txt .ul{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:6px}
+.th-cred{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.3)}
+
+/* NAV */
+.navdots{position:fixed;right:24px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:100}
+.nd{width:6px;height:6px;background:rgba(0,0,0,.15);border-radius:50%;cursor:pointer;transition:all .2s}
+.nd:hover{background:var(--blue);transform:scale(1.5)}
+
+@media(max-width:900px){
+  .hero{padding:36px 28px 48px}
+  .hstats{grid-template-columns:1fr 1fr}
+  .sec,.donts-sec,.thesis{padding:56px 28px}
+  .blockers,.chartgrid,.crow,.istrip,.dgrid,.trans,.tlrow,.kpibar,.wedge,.iwide{grid-template-columns:1fr}
+  .tbuckets{grid-template-columns:1fr 1fr}
+  .igrid{grid-template-columns:1fr 1fr}
+  .ccmeta{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="navdots" aria-label="Page sections">
+  <div class="nd" title="Hero" onclick="scrollTo('#hero')"></div>
+  <div class="nd" title="Diagnosis" onclick="scrollTo('#diagnosis')"></div>
+  <div class="nd" title="Traction" onclick="scrollTo('#traction')"></div>
+  <div class="nd" title="Insights" onclick="scrollTo('#insights')"></div>
+  <div class="nd" title="Campaigns" onclick="scrollTo('#campaigns')"></div>
+  <div class="nd" title="Inspiration" onclick="scrollTo('#inspiration')"></div>
+  <div class="nd" title="Rollout" onclick="scrollTo('#rollout')"></div>
+  <div class="nd" title="Thesis" onclick="scrollTo('#thesis')"></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="htag">ONDC Growth Strategy Playbook 2025</div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+    <h1 class="hh1">The <span class="o">network</span><br>nobody<br>is marketing.</h1>
+    <p class="hsub">A sharp, no-fluff playbook for seller acquisition, consumer adoption, and building India's open commerce movement from zero to habit.</p>
+    <div class="hstats">
+      <div class="hs"><span class="hs-n">20.4<span class="a">Cr</span></span><span class="hs-l">Total transactions</span></div>
+      <div class="hs"><span class="hs-n">7.6<span class="a">L</span></span><span class="hs-l">Sellers on network</span></div>
+      <div class="hs"><span class="hs-n">85<span class="a">%</span></span><span class="hs-l">Small businesses</span></div>
+      <div class="hs"><span class="hs-n">70<span class="a">%</span></span><span class="hs-l">Demand from Tier 2/3</span></div>
+    </div>
+  </div>
+  <div class="hscroll">Scroll to explore</div>
+</section>
+
+<!-- DIAGNOSIS -->
+<section class="sec diag" id="diagnosis">
+  <div class="slabel"><span>01</span>Strategic Diagnosis</div>
+  <h2 class="stitle">The core <span class="bl">paradox</span> nobody is solving.</h2>
+  <div class="paradox">
+    <p class="paradox-txt">You cannot build brand loyalty for a protocol.<br>You build it for <span class="hl">outcomes</span>.<br>Market the promise, not the plumbing.</p>
+  </div>
+  <div class="blockers">
+    <div class="blk">
+      <span class="blk-icon">SELLER FEAR //</span>
+      <div class="blk-who">Will there be buyers?</div>
+      <p class="blk-fear">Supply is growing fast. Demand activation lags. The chicken-and-egg is half-solved and nobody is closing the gap with a marketing strategy.</p>
+    </div>
+    <div class="blk">
+      <span class="blk-icon">BUYER FEAR //</span>
+      <div class="blk-who">What if delivery fails?</div>
+      <p class="blk-fear">Unbundled logistics creates a weakest-link problem. Any bad experience with any partner poisons the entire network's reputation. No central authority to fix it.</p>
+    </div>
+    <div class="blk">
+      <span class="blk-icon">BOTH FEAR //</span>
+      <div class="blk-who">Who do I complain to?</div>
+      <p class="blk-fear">Dispute resolution is fragmented. Trust-sensitive buyers see this as a dealbreaker before they even attempt a first order.</p>
+    </div>
+  </div>
+  <div class="wedge">
+    <div>
+      <div class="wedge-lbl">The Primary Wedge</div>
+      <p class="wedge-txt">Restaurants. Highest-frequency. Most commission-angry. A double-sided win: sellers save 15-20 margin points, buyers pay less for delivery. Stories write themselves.</p>
+    </div>
+    <div class="wedge-n">
+      <div class="wedge-big">20%</div>
+      <div class="wedge-sm">Saved per order<br>vs Swiggy/Zomato</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACTION -->
+<section class="sec trac" id="traction">
+  <div class="slabel"><span>02</span>Traction Dashboard</div>
+  <h2 class="stitle">Where ONDC is <span class="bl">winning</span>. Where it is not.</h2>
+  <div class="chartgrid">
+    <div class="cpanel">
+      <div class="cpanel-t">Retail Category Mix (May 2024)</div>
+      <div class="cpanel-s">Share of 5M monthly retail orders</div>
+      <div class="legend">
+        <span class="li"><span class="ls" style="background:#0B57D0"></span>Grocery 40%</span>
+        <span class="li"><span class="ls" style="background:#FF6A00"></span>Food 20%</span>
+        <span class="li"><span class="ls" style="background:#1B6B3A"></span>Home &amp; Kitchen 13%</span>
+        <span class="li"><span class="ls" style="background:#8B6914"></span>Fashion 7%</span>
+        <span class="li"><span class="ls" style="background:#BDBBB4"></span>Other 20%</span>
+      </div>
+      <div style="position:relative;width:100%;height:210px">
+        <canvas id="catChart" role="img" aria-label="Donut chart: Grocery 40%, Food 20%, Home and Kitchen 13%, Fashion 7%, Other 20%">Grocery 40%, Food 20%, Home and Kitchen 13%, Fashion 7%, Other 20%.</canvas>
+      </div>
+      <div class="cinsight"><strong>Grocery dominates</strong> but food is the emotional anchor. Both crossed 1M orders/month for the first time in May 2024. The frequency flywheel starts here.</div>
+    </div>
+    <div class="cpanel">
+      <div class="cpanel-t">Monthly Transaction Growth</div>
+      <div class="cpanel-s">Sep 2023 to Mar 2025, in millions</div>
+      <div class="legend">
+        <span class="li"><span class="ls" style="background:#0B57D0"></span>Total transactions (M)</span>
+      </div>
+      <div style="position:relative;width:100%;height:210px">
+        <canvas id="growthChart" role="img" aria-label="Line chart: 0.6M in Sep 2023 growing to 16M in Mar 2025">Transactions grew from 0.6M (Sep 2023) to 16M (Mar 2025), a 26x increase in 18 months.</canvas>
+      </div>
+      <div class="cinsight"><strong>26x growth</strong> in 18 months. Retail now outpaces mobility as the dominant category — a structural shift, not a spike.</div>
+    </div>
+  </div>
+  <div class="chartgrid" style="margin-top:2px;margin-bottom:2px">
+    <div class="cpanel">
+      <div class="cpanel-t">Commission Arbitrage</div>
+      <div class="cpanel-s">ONDC vs incumbent platforms (max %)</div>
+      <div class="legend">
+        <span class="li"><span class="ls" style="background:#0B57D0"></span>ONDC</span>
+        <span class="li"><span class="ls" style="background:#BF3535"></span>Legacy platforms</span>
+      </div>
+      <div style="position:relative;width:100%;height:210px">
+        <canvas id="commChart" role="img" aria-label="Bar chart: ONDC food 8%, ONDC retail 5%, Swiggy/Zomato 25%, Amazon/Flipkart 40%">ONDC charges 5 to 8 percent vs 18 to 25 percent on Swiggy/Zomato and 18 to 40 percent on Amazon/Flipkart.</canvas>
+      </div>
+      <div class="cinsight"><strong>5% vs 40%.</strong> For a restaurant doing Rs3L/month in delivery revenue, this is Rs45K-60K back every single month.</div>
+    </div>
+    <div class="cpanel">
+      <div class="cpanel-t">Geographic Demand Index</div>
+      <div class="cpanel-s">Top states by order volume (relative index)</div>
+      <div class="legend">
+        <span class="li"><span class="ls" style="background:#0B57D0"></span>Established states</span>
+        <span class="li"><span class="ls" style="background:#FF6A00"></span>Fastest growing</span>
+      </div>
+      <div style="position:relative;width:100%;height:210px">
+        <canvas id="geoChart" role="img" aria-label="Horizontal bar chart: Delhi 100, UP 82, Maharashtra 74, Bihar 58, Karnataka 50">Delhi leads at 100, UP second at 82. Bihar grew 42% month-on-month.</canvas>
+      </div>
+      <div class="cinsight"><strong>UP nearly doubled.</strong> Bihar grew 42%. The real market is Lucknow and Patna, not Connaught Place. Act accordingly.</div>
+    </div>
+  </div>
+  <div class="tbuckets">
+    <div class="bkt bkt-str">
+      <div class="blbl"><span class="bd bd-s"></span>Strong PMF</div>
+      <ul class="bcats">
+        <li>Grocery <span>40% of orders</span></li>
+        <li>Food Delivery <span>20% of orders</span></li>
+        <li>Mobility <span>3.8M trips/month</span></li>
+      </ul>
+    </div>
+    <div class="bkt bkt-emg">
+      <div class="blbl"><span class="bd bd-e"></span>Emerging Traction</div>
+      <ul class="bcats">
+        <li>Fashion D2C <span>330K orders</span></li>
+        <li>Home &amp; Kitchen <span>630K orders</span></li>
+        <li>Hyperlocal <span>Growing fast</span></li>
+      </ul>
+    </div>
+    <div class="bkt bkt-exp">
+      <div class="blbl"><span class="bd bd-x"></span>Experimental</div>
+      <ul class="bcats">
+        <li>B2B Wholesale <span>Pilots active</span></li>
+        <li>Fin Services <span>Loan pilots</span></li>
+        <li>Pharma <span>Compliance phase</span></li>
+      </ul>
+    </div>
+    <div class="bkt bkt-wk">
+      <div class="blbl"><span class="bd bd-w"></span>Avoid Now</div>
+      <ul class="bcats">
+        <li>Electronics HV <span>Trust gap</span></li>
+        <li>Travel / Hotels <span>No traction</span></li>
+        <li>Digital Services <span>Conceptual only</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section class="sec ins-sec" id="insights">
+  <div class="slabel"><span>03</span>Core Insights</div>
+  <h2 class="stitle">7 things nobody is saying <span style="color:var(--orange)">loudly enough.</span></h2>
+  <div class="istrip">
+    <div class="icell">
+      <div class="inum">01 //</div>
+      <div class="ihead">Supply is ahead of demand in Tier 2/3. Demand is ahead of supply in metros.</div>
+      <div class="ibody">84% of sellers are small businesses concentrated in smaller cities. Buyer apps skew metro. Geographic mismatch is slowing the network effect. Fix this before anything else.</div>
+      <span class="itag">Geographic</span>
+    </div>
+    <div class="icell">
+      <div class="inum">02 //</div>
+      <div class="ihead">Interoperability is ONDC's biggest asset and its biggest UX liability.</div>
+      <div class="ibody">A buyer on Paytm, a seller on Vikra, fulfilled by Shadowfax. Any weak link breaks trust. ONDC cannot unilaterally optimize the experience. It must enforce SLA standards across every layer.</div>
+      <span class="itag">Structural</span>
+    </div>
+  </div>
+  <div class="istrip">
+    <div class="icell">
+      <div class="inum">03 //</div>
+      <div class="ihead">Growth was subsidy-driven. Retention requires organic value.</div>
+      <div class="ibody">Post-subsidy, retail order volumes dropped. Price alone does not create habit. UX consistency and reliability must follow the initial incentive. Discounts are a loan, not a foundation.</div>
+      <span class="itag">Retention Risk</span>
+    </div>
+    <div class="icell">
+      <div class="inum">04 //</div>
+      <div class="ihead">Buyer app fragmentation is killing brand recall.</div>
+      <div class="ibody">Consumers ordering via Magicpin have no idea they are on ONDC. A universal "Powered by ONDC" badge with a consistent trust promise can create network-level brand equity without disrupting the app layer.</div>
+      <span class="itag">Branding Gap</span>
+    </div>
+  </div>
+  <div class="iwide">
+    <div class="iwide-n">05</div>
+    <div class="iwide-t">B2B wholesale is the hidden flywheel. If a kirana's first ONDC experience is buying inventory cheaper, she becomes a seller-side advocate automatically. Solve credit, unlock everything.</div>
+  </div>
+  <div class="istrip">
+    <div class="icell">
+      <div class="inum">06 //</div>
+      <div class="ihead">Fashion and D2C growth is real but fragile. Trust, not discovery, is the bottleneck.</div>
+      <div class="ibody">Return rates and quality complaints will stall growth unless ONDC introduces a network-wide verified seller layer. A badge system modelled on FSSAI certification would do this at scale.</div>
+      <span class="itag">Category Risk</span>
+    </div>
+    <div class="icell">
+      <div class="inum">07 //</div>
+      <div class="ihead">The smallest repeatable unit is pincode density, not city launch.</div>
+      <div class="ibody">Target 50+ active sellers and 500+ monthly orders in one pincode before expanding. Network effects compound locally first. Launching in "600 cities" means nothing if none have critical density.</div>
+      <span class="itag">GTM</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSITION -->
+<div class="trans">
+  <div>
+    <div class="tr-badge">So what does this mean</div>
+    <h2 class="tr-q">Six campaigns that could actually <span class="bl">move the needle.</span></h2>
+  </div>
+  <div class="tr-r">
+    <div class="trp"><div class="trp-icon">P1</div><div class="trp-t">Make sellers the marketing force.<small>Angry sellers with a flag to wave are more powerful than any ad campaign ever built.</small></div></div>
+    <div class="trp"><div class="trp-icon">P2</div><div class="trp-t">Win one category, one pincode at a time.<small>Density before scale. Depth before width. Always.</small></div></div>
+    <div class="trp"><div class="trp-icon">P3</div><div class="trp-t">Activate identity, not just price.<small>People who feel they are part of something stay longer than people chasing cashback.</small></div></div>
+  </div>
+</div>
+
+<!-- CAMPAIGNS -->
+<section class="sec camp" id="campaigns">
+  <div class="slabel"><span>04</span>Campaign Ideas</div>
+  <h2 class="stitle">6 campaigns. 2 for <span class="or">sellers</span>. 4 for <span class="bl">buyers</span>.</h2>
+  <div class="ctype-bar">
+    <div class="ct ct-sup">Supply Side</div>
+    <div class="ct ct-sup">B1 and B2</div>
+    <div class="ct ct-off" style="padding:12px 8px;color:var(--gmid)">|</div>
+    <div class="ct ct-dem">Demand Side</div>
+    <div class="ct ct-dem">C1 to C4</div>
+  </div>
+
+  <!-- B1 B2 -->
+  <div class="crow">
+    <div class="cc cc-s">
+      <div class="cch"><span class="cpill ps">Seller Campaign</span><span class="ccid">B1</span></div>
+      <div class="ccname">"Kitna Diya?"<br><small>How much did you pay?</small></div>
+      <div class="cchook">"You have paid Swiggy 25% your whole digital life. Every month. Stop."</div>
+      <div class="ccmeta">
+        <div class="ccmi"><span class="ccmi-l">Target</span><span class="ccmi-v">Restaurants on Swiggy/Zomato doing Rs2L+ monthly delivery revenue</span></div>
+        <div class="ccmi"><span class="ccmi-l">Emotional Hook</span><span class="ccmi-v">Righteous anger. The money that should have stayed theirs.</span></div>
+        <div class="ccmi"><span class="ccmi-l">Functional Benefit</span><span class="ccmi-v">Rs45K-60K back per month for a restaurant doing Rs3L delivery GMV</span></div>
+        <div class="ccmi"><span class="ccmi-l">Channel Mix</span><span class="ccmi-v">WhatsApp Business, YouTube pre-roll Hindi, Instagram Reels, outdoor near market areas</span></div>
+      </div>
+      <div class="ccloop">
+        <div class="ccloop-l">Growth Loop</div>
+        <div class="ccloop-t">Restaurant joins ONDC seller app then saves money in Month 1 then tells 3 peer restaurant owners then referral circle compounds via existing business trust networks</div>
+      </div>
+      <div class="ccmet">Proof metric: Commission Calculator completions + new restaurant sign-ups per city per week</div>
+    </div>
+    <div class="cc cc-s">
+      <div class="cch"><span class="cpill ps">Seller Campaign</span><span class="ccid">B2</span></div>
+      <div class="ccname">"Pehli Dukaan Online"<br><small>First store online</small></div>
+      <div class="cchook">"Your store. Your name. Online. In 20 minutes."</div>
+      <div class="ccmeta">
+        <div class="ccmi"><span class="ccmi-l">Target</span><span class="ccmi-v">80% of kiranas that have never sold online. Digitally absent artisans and women SHGs.</span></div>
+        <div class="ccmi"><span class="ccmi-l">Emotional Hook</span><span class="ccmi-v">Pride. The feeling of putting your name on something for the first time.</span></div>
+        <div class="ccmi"><span class="ccmi-l">Functional Benefit</span><span class="ccmi-v">List on Mystore/Costbo in your language. Visible to the whole city same day.</span></div>
+        <div class="ccmi"><span class="ccmi-l">Channel Mix</span><span class="ccmi-v">Mandi Saturday camps, JioSaavn audio, kirana association WhatsApp, CSC centers</span></div>
+      </div>
+      <div class="ccloop">
+        <div class="ccloop-l">Growth Loop</div>
+        <div class="ccloop-t">One kirana gets ONDC Dukaan sticker then neighborhood sees it then 3 other kiranas ask how then association-level chain reaction then town-by-town domination</div>
+      </div>
+      <div class="ccmet">Proof metric: First-time digital sellers per week + Day 30 active seller retention rate</div>
+    </div>
+  </div>
+
+  <!-- C1 C2 -->
+  <div class="crow">
+    <div class="cc cc-d">
+      <div class="cch"><span class="cpill pd">Consumer Campaign</span><span class="ccid">C1</span></div>
+      <div class="ccname">"Apne Mohalle Ki Dukaan, Phone Pe"<br><small>Your mohalla's store, on your phone</small></div>
+      <div class="cchook">"Your local bhaiya still knows what you want. He just delivers now."</div>
+      <div class="ccmeta">
+        <div class="ccmi"><span class="ccmi-l">Target</span><span class="ccmi-v">Urban 25-45 in Tier 2 cities who feel disconnected from local stores</span></div>
+        <div class="ccmi"><span class="ccmi-l">Emotional Hook</span><span class="ccmi-v">Nostalgia. Familiarity of local commerce. Mild guilt of abandoning it.</span></div>
+        <div class="ccmi"><span class="ccmi-l">Functional Benefit</span><span class="ccmi-v">Local sellers mean faster delivery, fresher products, no platform markup</span></div>
+        <div class="ccmi"><span class="ccmi-l">Channel Mix</span><span class="ccmi-v">Instagram/Facebook hyperlocal Reels, RWA WhatsApp seeding, Magicpin in-app</span></div>
+      </div>
+      <div class="ccloop">
+        <div class="ccloop-l">Growth Loop</div>
+        <div class="ccloop-t">Consumer tries local kirana via ONDC then arrives faster than Amazon then tells spouse then spouse tells housing society then whole building becomes repeat buyers</div>
+      </div>
+      <div class="ccmet">Proof metric: Day 7 and Day 30 repeat order rate + average buyer-to-seller distance under 5km</div>
+    </div>
+    <div class="cc cc-d">
+      <div class="cch"><span class="cpill pd">Consumer Campaign</span><span class="ccid">C2</span></div>
+      <div class="ccname">"Sasta Kyun Nahi?"<br><small>Why pay more?</small></div>
+      <div class="cchook">"You paid Rs40 delivery fee on a Rs200 order. You did not have to."</div>
+      <div class="ccmeta">
+        <div class="ccmi"><span class="ccmi-l">Target</span><span class="ccmi-v">Price-sensitive buyers across all tiers who complain about delivery fees publicly</span></div>
+        <div class="ccmi"><span class="ccmi-l">Emotional Hook</span><span class="ccmi-v">Mild outrage plus feeling smart. "You were overpaying. Now you know."</span></div>
+        <div class="ccmi"><span class="ccmi-l">Functional Benefit</span><span class="ccmi-v">Commission savings flow to buyer as lower prices or free delivery on ONDC apps</span></div>
+        <div class="ccmi"><span class="ccmi-l">Channel Mix</span><span class="ccmi-v">Seed via 20 micro-influencers doing food/price content. Meme pages. WhatsApp forwards. No paid distribution.</span></div>
+      </div>
+      <div class="ccloop">
+        <div class="ccloop-l">Growth Loop</div>
+        <div class="ccloop-t">Relatable meme shared organically then people check ONDC app then try first order then share price difference story then cycle continues without paid media</div>
+      </div>
+      <div class="ccmet">Proof metric: Organic share rate + first purchase conversion from content + CAC vs platform baseline</div>
+    </div>
+  </div>
+
+  <!-- C3 C4 -->
+  <div class="crow">
+    <div class="cc cc-d">
+      <div class="cch"><span class="cpill pd">Consumer Campaign</span><span class="ccid">C3</span></div>
+      <div class="ccname">"Namma Yatri is Already Here"<br><small>Category wedge via ride-hailing</small></div>
+      <div class="cchook">"You already use it for your auto. Now use it for your groceries."</div>
+      <div class="ccmeta">
+        <div class="ccmi"><span class="ccmi-l">Target</span><span class="ccmi-v">Namma Yatri users in South India who are already ONDC users without knowing it</span></div>
+        <div class="ccmi"><span class="ccmi-l">Emotional Hook</span><span class="ccmi-v">Trust transfer. Lowest cognitive friction possible. Same thing, new category.</span></div>
+        <div class="ccmi"><span class="ccmi-l">Functional Benefit</span><span class="ccmi-v">1-tap grocery order post-ride. Near-zero CAC from an existing base of millions.</span></div>
+        <div class="ccmi"><span class="ccmi-l">Channel Mix</span><span class="ccmi-v">In-app cross-sell post-ride completion, driver education scripts, Kannada/Tamil push notifications</span></div>
+      </div>
+      <div class="ccloop">
+        <div class="ccloop-l">Growth Loop</div>
+        <div class="ccloop-t">Ride ends then cross-sell grocery in-app then habitual ONDC retail user created at near-zero CAC from existing ride-hailing base</div>
+      </div>
+      <div class="ccmet">Proof metric: Namma Yatri users placing retail ONDC order within 60 days of activation</div>
+    </div>
+    <div class="cc cc-d">
+      <div class="cch"><span class="cpill pd">Consumer Campaign</span><span class="ccid">C4</span></div>
+      <div class="ccname">"Apna Wala Shopping"<br><small>Identity activation, not price switch</small></div>
+      <div class="cchook">"Every order on ONDC keeps margin with an Indian shopkeeper. Not a foreign platform."</div>
+      <div class="ccmeta">
+        <div class="ccmi"><span class="ccmi-l">Target</span><span class="ccmi-v">Trust-sensitive first-generation online buyers aged 35-55 in semi-urban India</span></div>
+        <div class="ccmi"><span class="ccmi-l">Emotional Hook</span><span class="ccmi-v">Identity and pride. You are not switching apps. You are choosing India.</span></div>
+        <div class="ccmi"><span class="ccmi-l">Functional Benefit</span><span class="ccmi-v">Govt-backed. Data not sold. Known brands. Dispute resolution built in.</span></div>
+        <div class="ccmi"><span class="ccmi-l">Channel Mix</span><span class="ccmi-v">Doordarshan, regional TV news, family WhatsApp groups via doctors/teachers/postmasters as seed users</span></div>
+      </div>
+      <div class="ccloop">
+        <div class="ccloop-l">Growth Loop</div>
+        <div class="ccloop-t">Trusted figure uses ONDC publicly then community follows then first good experience then family WhatsApp group becomes a referral engine no paid ad can replicate</div>
+      </div>
+      <div class="ccmet">Proof metric: Buyer acquisition from Tier 3+ cities + average age of new buyers + NPS at first order</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSPIRATIONS -->
+<section class="sec inspo" id="inspiration">
+  <div class="slabel"><span>05</span>Steal Like an Artist</div>
+  <h2 class="stitle">10 mechanisms <span class="bl">borrowed</span>, rebuilt for India.</h2>
+  <div class="igrid">
+    <div class="icard">
+      <div class="ic-n">01</div>
+      <div class="ic-src">Source: UPI / Demonetization</div>
+      <div class="ic-mech">Forced trial + zero friction = habit</div>
+      <div class="ic-remix">Scale the ration shop pilot nationally. 500M ration card holders as the first-user base. First purchase is forced. Second is habit.</div>
+      <span class="ic-pill">Supply wedge</span>
+    </div>
+    <div class="icard">
+      <div class="ic-n">02</div>
+      <div class="ic-src">Source: Meesho Reseller Model</div>
+      <div class="ic-mech">Every seller is also a salesperson</div>
+      <div class="ic-remix">Make every ONDC seller a micro-referrer. New seller joins via their link, original seller gets a month of fee waiver. Network grows itself.</div>
+      <span class="ic-pill">Seller loop</span>
+    </div>
+    <div class="icard">
+      <div class="ic-n">03</div>
+      <div class="ic-src">Source: Jio Hardware Strategy</div>
+      <div class="ic-mech">Loss leader creates network lock-in</div>
+      <div class="ic-remix">First 50 orders on ONDC: zero commission. Once a seller has 50 orders and a rating, the network is their lifeline. They never leave.</div>
+      <span class="ic-pill">Onboarding</span>
+    </div>
+    <div class="icard">
+      <div class="ic-n">04</div>
+      <div class="ic-src">Source: Zomato Partner Branding</div>
+      <div class="ic-mech">Name the relationship, give it status</div>
+      <div class="ic-remix">The ONDC Seller Badge. Physical sticker. Looks like an FSSAI certificate. Goes on the window, packaging, Google My Business. Pride creates evangelism.</div>
+      <span class="ic-pill">Trust layer</span>
+    </div>
+    <div class="icard">
+      <div class="ic-n">05</div>
+      <div class="ic-src">Source: Airbnb "Belong Anywhere"</div>
+      <div class="ic-mech">Story of what changed, not the product</div>
+      <div class="ic-remix">The chappal maker in Agra whose daughters now go to English school. The restaurant uncle who bought a tandoor with what he saved from Zomato. Real documentaries, not ads.</div>
+      <span class="ic-pill">Content engine</span>
+    </div>
+    <div class="icard">
+      <div class="ic-n">06</div>
+      <div class="ic-src">Source: Hotstar IPL Strategy</div>
+      <div class="ic-mech">Own distribution around a cultural event</div>
+      <div class="ic-remix">ONDC Diwali Bazaar: 10-day push, all buyer apps, local seller first. Position explicitly as India's own e-commerce sale. "Desi Diwali Sale."</div>
+      <span class="ic-pill">Seasonal spike</span>
+    </div>
+    <div class="icard">
+      <div class="ic-n">07</div>
+      <div class="ic-src">Source: Dunzo WhatsApp Growth</div>
+      <div class="ic-mech">One power user in a closed group reaches 200 neighbors</div>
+      <div class="ic-remix">Seed buyer apps in RWA WhatsApp groups. Give RWA secretaries a deal: free delivery for a week if 20 households place first orders.</div>
+      <span class="ic-pill">Hyperlocal</span>
+    </div>
+    <div class="icard">
+      <div class="ic-n">08</div>
+      <div class="ic-src">Source: Zerodha Founder Brand</div>
+      <div class="ic-mech">Authentic leadership builds trust at zero cost</div>
+      <div class="ic-remix">T Koshy posts directly. "Here's what we got wrong. Here is what we fixed. Here is what a kirana in Varanasi told me yesterday." No PR. No budget needed.</div>
+      <span class="ic-pill">Brand trust</span>
+    </div>
+    <div class="icard">
+      <div class="ic-n">09</div>
+      <div class="ic-src">Source: Dollar Shave Club Video</div>
+      <div class="ic-mech">Make the situation the villain</div>
+      <div class="ic-remix">90-second Hindi video. Restaurant owner: "This is what I paid Swiggy: Rs62K. This is what I kept: Rs15K. Then I found there is a choice." Math is the tagline. WhatsApp only.</div>
+      <span class="ic-pill">Viral hook</span>
+    </div>
+    <div class="icard">
+      <div class="ic-n">10</div>
+      <div class="ic-src">Source: Wikipedia Fundraiser</div>
+      <div class="ic-mech">Identity activation over transactional ask</div>
+      <div class="ic-remix">Do not say "try ONDC." Say "every order stays in India." The buyer who feels this is not price-switching. They are mission-switching. Stickier than any cashback.</div>
+      <span class="ic-pill">Identity play</span>
+    </div>
+  </div>
+</section>
+
+<!-- ROLLOUT -->
+<section class="sec roll" id="rollout">
+  <div class="slabel"><span>06</span>Rollout Plan</div>
+  <h2 class="stitle">Week 1. Month 1. <span style="color:var(--yellow)">Quarter 1.</span></h2>
+  <div class="tlrow">
+    <div class="tlp tlp-w">
+      <div class="tlperiod">Week 1 // Diagnose and Arm</div>
+      <div class="tltitle">Build assets. Find stories. Spend nothing on media.</div>
+      <ul class="tlitems">
+        <li class="tli">Audit 10 most-active seller cities. Talk to 100 sellers. Find 5 with dramatic margin improvement. Record unpolished on phone cameras.</li>
+        <li class="tli">Build Commission Calculator tool, restaurant and retail versions. Deploy via WhatsApp bot.</li>
+        <li class="tli">Co-develop one joint message with top 3 buyer apps by MAU.</li>
+        <li class="tli">Activate ONDC Mitra pilot in 3 Tier 2 cities via CSC center network.</li>
+        <li class="tli">Identify 30 micro-influencers doing food and price content in Hindi, Tamil, Kannada, Telugu.</li>
+      </ul>
+    </div>
+    <div class="tlp tlp-m">
+      <div class="tlperiod">Month 1 // Light the Match</div>
+      <div class="tltitle">Activate supply side. Acquire first buyers at near-zero CAC.</div>
+      <ul class="tlitems">
+        <li class="tli">Launch Kitna Diya on WhatsApp and YouTube. 10 real restaurant videos, authentic, subtitled.</li>
+        <li class="tli">Run Namma Yatri cross-sell in Bengaluru and Hyderabad. Target 50,000 new retail buyers from existing ride-hailing base.</li>
+        <li class="tli">Seed 90-second DSC-style video via 30 micro-influencers. No paid distribution. WhatsApp only.</li>
+        <li class="tli">Distribute ONDC Dukaan Badge stickers to 10,000 sellers across 5 cities. Document rollout visually.</li>
+        <li class="tli">Begin RWA WhatsApp seeding in 50 housing societies in Delhi NCR, Pune, Hyderabad.</li>
+      </ul>
+    </div>
+    <div class="tlp tlp-q">
+      <div class="tlperiod">Quarter 1 // Build the Flywheel</div>
+      <div class="tltitle">Scale what worked. Launch the Diwali Bazaar. Build B2B proof.</div>
+      <ul class="tlitems">
+        <li class="tli">Pre-heat ONDC Diwali Bazaar in Month 2. Give early joiners "founding seller" status. Recruit sellers 60 days before Diwali.</li>
+        <li class="tli">Roll ONDC Mitra program to all districts with CSC presence. Target 500,000 potential Mitras nationally.</li>
+        <li class="tli">Partner with 2 state governments for ONDC procurement at ration shops and municipal supplies.</li>
+        <li class="tli">Publish first ONDC Seller Income Report. Real data, margin savings, cities. Make it press-worthy not a PR release.</li>
+        <li class="tli">Start B2B kirana pilot: 10,000 kiranas buy wholesale via ONDC B2B in 3 states. Measure savings for next cycle.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="kpibar">
+    <div class="kpib"><span class="kpiv">2 Crore</span><span class="kpil">Monthly transacting buyers by Q1 end</span></div>
+    <div class="kpib"><span class="kpiv">1 Lakh</span><span class="kpil">New sellers onboarded in Q1</span></div>
+    <div class="kpib"><span class="kpiv">35%+</span><span class="kpil">Repeat order rate within 90 days</span></div>
+    <div class="kpib"><span class="kpiv">under Rs40</span><span class="kpil">Cost per transacting buyer</span></div>
+  </div>
+</section>
+
+<!-- DONTS -->
+<section class="donts-sec" id="donts">
+  <div class="slabel"><span>07</span>What ONDC Must Not Do</div>
+  <h2 class="stitle">6 traps. Avoid every one.</h2>
+  <div class="dgrid">
+    <div class="dc"><div class="dc-x">01</div><div class="dc-t">Do not become a consumer brand directly.<small>ONDC is not Amazon. Consumer campaigns that position ONDC as a shopping destination will confuse. Market outcomes. Let buyer apps own the destination.</small></div></div>
+    <div class="dc"><div class="dc-x">02</div><div class="dc-t">Do not obsess over metro cities.<small>70%+ of demand already comes from Tier 2 and 3. The next 100 million buyers are in Kanpur, not Connaught Place. Budget accordingly.</small></div></div>
+    <div class="dc"><div class="dc-x">03</div><div class="dc-t">Do not compete on discounts.<small>Amazon has deeper pockets. You will lose a cashback war. Compete on fairness, locality, and trust. That terrain is where ONDC wins and Amazon cannot follow.</small></div></div>
+    <div class="dc"><div class="dc-x">04</div><div class="dc-t">Do not hide the government backing.<small>For Tier 2 and 3 trust-sensitive buyers, "sarkar ka platform" is a feature, not a liability. Lean into it. It is an advantage money cannot buy.</small></div></div>
+    <div class="dc"><div class="dc-x">05</div><div class="dc-t">Do not try to solve every category at once.<small>One wedge category per city. Food in metros. Grocery in Tier 2. Artisan products in craft clusters. Density beats coverage at every stage of growth.</small></div></div>
+    <div class="dc"><div class="dc-x">06</div><div class="dc-t">Do not let buyer app fragmentation kill network recall.<small>If consumers do not know they are on ONDC, the network builds no equity. A universal "Powered by ONDC" badge is the minimum viable brand layer across all apps.</small></div></div>
+  </div>
+</section>
+
+<!-- THESIS -->
+<section class="thesis" id="thesis">
+  <div class="th-eye">The single best thesis</div>
+  <p class="th-txt">ONDC wins not by building a better Amazon, but by becoming the economic backbone that lets <span class="ul">50 million Indian sellers keep the money</span> they have been paying as tribute to foreign platforms.</p>
+  <div class="th-cred">ONDC Growth Strategy Playbook 2025</div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var dk = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var gc = dk ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
+  var tc = dk ? 'rgba(255,255,255,0.4)' : '#777';
+  Chart.defaults.font.family = "'Inter', sans-serif";
+
+  var ccat = document.getElementById('catChart');
+  if(ccat) new Chart(ccat,{type:'doughnut',data:{labels:['Grocery','Food','Home & Kitchen','Fashion','Other'],datasets:[{data:[40,20,13,7,20],backgroundColor:['#0B57D0','#FF6A00','#1B6B3A','#8B6914','#C5C3BB'],borderColor:dk?'#111':'#fff',borderWidth:3,hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return ' '+c.label+': '+c.raw+'%'}}}}}});
+
+  var cgr = document.getElementById('growthChart');
+  if(cgr) new Chart(cgr,{type:'line',data:{labels:["Sep'23","Nov'23","Jan'24","Mar'24","May'24","Jul'24","Sep'24","Nov'24","Jan'25","Mar'25"],datasets:[{label:'Transactions (M)',data:[0.6,1.5,3.2,7.7,8.9,10,11.5,13,14.5,16],borderColor:'#0B57D0',backgroundColor:'rgba(11,87,208,0.07)',borderWidth:2.5,fill:true,tension:0.4,pointBackgroundColor:'#0B57D0',pointRadius:3,pointHoverRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:gc},ticks:{color:tc,font:{size:9,family:"'Space Mono',monospace"},maxRotation:30,autoSkip:false}},y:{grid:{color:gc},ticks:{color:tc,font:{size:10},callback:function(v){return v+'M'}},beginAtZero:true}}}});
+
+  var cco = document.getElementById('commChart');
+  if(cco) new Chart(cco,{type:'bar',data:{labels:['ONDC (Food)','ONDC (Retail)','Swiggy/Zomato','Amazon/Flipkart'],datasets:[{label:'Max commission %',data:[8,5,25,40],backgroundColor:['#0B57D0','#0B57D0','#BF3535','#BF3535'],borderRadius:3,borderWidth:0,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return ' Up to '+c.raw+'%'}}}},scales:{x:{grid:{color:gc},ticks:{color:tc,font:{size:10},callback:function(v){return v+'%'}},max:45},y:{grid:{display:false},ticks:{color:tc,font:{size:10},autoSkip:false}}}}});
+
+  var cge = document.getElementById('geoChart');
+  if(cge) new Chart(cge,{type:'bar',data:{labels:['Delhi','Uttar Pradesh','Maharashtra','Bihar','Karnataka','Rajasthan'],datasets:[{label:'Order index',data:[100,82,74,58,50,42],backgroundColor:['#0B57D0','#0B57D0','#0B57D0','#FF6A00','#FF6A00','#FF6A00'],borderRadius:3,borderWidth:0,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return ' Index: '+c.raw}}}},scales:{x:{grid:{color:gc},ticks:{color:tc,font:{size:10}},max:120},y:{grid:{display:false},ticks:{color:tc,font:{size:10},autoSkip:false}}}}});
+});
+
+function scrollTo(id){document.querySelector(id).scrollIntoView({behavior:'smooth'})}
+</script>
+</body>
+</html>
